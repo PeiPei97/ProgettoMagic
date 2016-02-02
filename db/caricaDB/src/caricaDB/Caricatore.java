@@ -25,27 +25,24 @@ public class Caricatore {
 		this.conn = conn;
 	}
 	
-	public void connetti(){
-		
-	}
 	
-	public void caricaElementi() throws SQLException, ClassNotFoundException, IOException {
+	public void carica(String tabella, String file) throws SQLException, ClassNotFoundException, IOException {
 		PreparedStatement stmSql = null;
 		int i = 0;
-		String[] splitted = null;
 		String s = null;
 		
-		fr = new FileReader("elementi.csv");
+		fr = new FileReader(file);
 		leggi = new BufferedReader(fr);
 		
-		stmSql = conn.prepareStatement("INSERT INTO colori VALUES ?, ?");
+		stmSql = conn.prepareStatement("INSERT INTO " + tabella + " VALUES (?, ?)");
 		while((s=leggi.readLine()) != null){
-			splitted = s.split(";");
-			stmSql.setInt(1, Integer.parseInt(splitted[0]));
-			stmSql.setString(2, splitted[1]);
+			stmSql.setInt(1, 0);
+			stmSql.setString(2, s);
+			
+			stmSql.executeUpdate();
 		}
 				
 		fr.close();		
 			
-	}	
+	}		
 }
