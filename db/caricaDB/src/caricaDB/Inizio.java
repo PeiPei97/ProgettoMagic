@@ -20,10 +20,10 @@ public class Inizio {
 		Caricatore carica = null;
 		
 
-		stringaConn = "jdbc:mysql://localhost/carte?user=root&password=";
+		stringaConn = "jdbc:sqlite:carte.db";
 		
 		//connessione a mydb
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("org.sqlite.JDBC");
 		conn = DriverManager.getConnection(stringaConn);	
 		
 		carica = new Caricatore(conn);
