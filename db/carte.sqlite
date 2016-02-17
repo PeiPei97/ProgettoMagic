@@ -1,0 +1,43 @@
+CREATE TABLE tipi (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	tipo VARCHAR(70)
+);
+
+CREATE TABLE rarita (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	descrizione VARCHAR(45)
+);
+
+CREATE TABLE colori (
+	colori_id INTEGER PRIMARY KEY AUTOINCREMENT,
+	carte_id INTEGER
+);
+
+CREATE TABLE carte (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	nome VARCHAR(45),
+	link VARCHAR(255),
+	tipo INTEGER,
+	rarita INTEGER,
+	testo TEXT,
+	serie INTEGER
+);
+
+CREATE TABLE costi_carte (
+	carte_id INTEGER,
+	colori_id INTEGER,
+	quante INTEGER,
+	PRIMARY KEY(carte_id, colori_id)
+);
+
+CREATE TABLE espansioni (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	espansione VARCHAR(45)
+);
+
+CREATE TABLE espansioni_carte (
+	carte_id INTEGER,
+	espansioni_id INTEGER,
+	prezzo REAL,
+	PRIMARY KEY(carte_id, espansioni_id)
+);
