@@ -36,7 +36,6 @@ public class Inizio {
 		
 		try {
 			conn.close();
-			//connComuni.close();
 			System.out.println("finito");
 		} catch (SQLException e) {
 			System.out.println("Error closing connection");
