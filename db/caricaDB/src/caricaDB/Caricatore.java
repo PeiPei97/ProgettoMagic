@@ -12,6 +12,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
@@ -36,10 +37,11 @@ public class Caricatore {
 		
 		stmSql = conn.prepareStatement("INSERT INTO " + tabella + " VALUES (?, ?)");
 		while((s=leggi.readLine()) != null){
-			stmSql.setInt(1, 0);
+			stmSql.setNull(1, Types.INTEGER);
 			stmSql.setString(2, s);
 			
 			stmSql.executeUpdate();
+			System.out.println(i++);
 		}
 				
 		fr.close();		
