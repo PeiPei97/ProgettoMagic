@@ -14,6 +14,7 @@
 
   function ricercaAttirbuti($tabella){
     try{
+      global $conn;
       $stmSql = $conn->prepare("SELECT * FROM (?)");
       $stmSql->bindParam(1, $tabella);
       $stmSql->execute();
