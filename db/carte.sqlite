@@ -20,7 +20,7 @@ CREATE TABLE carte (
 	tipo INTEGER,
 	rarita INTEGER,
 	testo TEXT,
-	serie INTEGER
+	carta_id INTEGER
 );
 
 CREATE TABLE costi_carte (
