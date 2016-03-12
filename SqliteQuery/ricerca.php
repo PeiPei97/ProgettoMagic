@@ -49,10 +49,10 @@
     $binds= [];
     $query = "SELECT * FROM ";
     $tabelle = "carte";
-    $condizioni = "1 = 1 ";
+    $condizioni = "1=1 ";
     if($request["nome"] != ""){
-      $condizioni = $condizioni."AND nome = ? ";
-      $binds[] = $request["nome"];
+      $condizioni = $condizioni."AND nome LIKE ? ";
+      $binds[] = "%".$request["nome"]."%";
     }
     if($request["tipo"] != ""){
       $condizioni = $condizioni."AND tipo = ? ";
@@ -76,49 +76,52 @@
     }
 
     $query = $query.$tabelle." WHERE ".$condizioni;
-    echo($query);
+    //echo($query);
     $stm = $conn->prepare($query);
 
-    $i = 1;
-    foreach ($binds as $campo) {
-      $stm->bindParam($i, $campo);
-      $i = $i+1;
+    for($i=1; $i <= count($binds) ; $i=$i+1){
+      $stm->bindParam($i, $binds[$i-1]);
     }
+    // foreach ($binds as $campo) {
+    //   echo("$i >> *$campo*<br>");
+    //   $stm->bindParam($i, $campo);
+    //   $i = $i+1;
+    // }
 
 
     try{
+
         $stm->execute();
     }catch(PDOException $e){
       echo($e->getMessage());
     }
-    while($stm->fetch()) echo "Haloa";
 
     return codificaRisultati($stm);
   }
 
-  $arr["nome"] = "";
-  $arr["tipo"] = "";
-  $arr["colore"] = "";
-  $arr["espansione"] = "";
-  $arr["rarita"] = "";
-
-  $jsonResults = ricerca($arr);
+  // $arr["nome"] = "Orco";
+  // $arr["tipo"] = "4";
+  // $arr["colore"] = "";
+  // $arr["espansione"] = "";
+  // $arr["rarita"] = "3";
+  //
+  // $jsonResults = ricerca($arr);
 
 
   /*$jsonResults = ricercaAttirbuti("espansioni");
 
   /*Leggo ricorsivamente l'array json, utile per gli array annidati*/
-  $jsonIterator = new RecursiveIteratorIterator(
-    new RecursiveArrayIterator(json_decode($jsonResults, TRUE)),
-    RecursiveIteratorIterator::SELF_FIRST);
-
-  foreach ($jsonIterator as $key => $val) {
-    if(is_array($val)) {
-        echo "$key:\n";
-    } else {
-        echo "$key => $val</br>";
-    }
-  }
+  // $jsonIterator = new RecursiveIteratorIterator(
+  //   new RecursiveArrayIterator(json_decode($jsonResults, TRUE)),
+  //   RecursiveIteratorIterator::SELF_FIRST);
+  //
+  // foreach ($jsonIterator as $key => $val) {
+  //   if(is_array($val)) {
+  //       echo "$key:\n";
+  //   } else {
+  //       echo "$key => $val</br>";
+  //   }
+  // }
 
 
 /*
@@ -139,7 +142,7 @@
       echo("$colore");
   }*/
 
-  echo("Fine!");
+  //echo("Fine!");
 
 
  ?>
