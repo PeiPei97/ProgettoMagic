@@ -1,0 +1,5 @@
+Tasks
+* TODO Ricostruire database in inglese
+* TODO Caricare carte da json
+* TODO Ricerca immagini 
+** Scraping su http://magiccards.info/query?q=NomeCarta
