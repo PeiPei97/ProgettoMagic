@@ -1,15 +1,30 @@
 <?php
-$ch = curl_init("http://mtgjson.com/json/AllCards.json.zip");
-curl_setopt($ch, CURLOPT_RETURNTRANSFER , true);
-curl_setopt($ch, CURLOPT_PROXYAUTH, CURLAUTH_NTLM);
-curl_setopt($ch, CURLOPT_PROXY, '192.168.0.10:8080');
-curl_setopt($ch, CURLOPT_PROXYUSERPWD, 'inf.lerdaa1204:password97');
+/* "http://mtgjson.com/json/AllCards.json.zip" */
+function scaricaPagina($ind) {
+    /*$ch = curl_init($ind);
+    if(false) {
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER , true);
+        curl_setopt($ch, CURLOPT_PROXYAUTH, CURLAUTH_NTLM);
+        curl_setopt($ch, CURLOPT_PROXY, '192.168.0.10:8080');
+        curl_setopt($ch, CURLOPT_PROXYUSERPWD, 'inf.lerdaa1204:password97');
 
-curl_setopt($ch, CURLOPT_VERBOSE, true);
+        curl_setopt($ch, CURLOPT_VERBOSE, true);
+    }
 
-$out = curl_exec($ch);
-curl_close($ch);
+    $out = curl_exec($ch);
+    curl_close($ch);*/
 
+    return file_get_contents($ind);
+}
+
+$cv = scaricaPagina('http://mtgjson.com/'); /* Controllo versione */
+
+preg_match('/\<span id=\"currentversion\"\>[^\d]*([\d]*\.[\d]*\.[\d]*).*\<\/span\>/', $cv, $m);
+
+if(!(versione = 
+
+
+/*
 $f = fopen("cards.zip", "w") or die("Unable to open file!");
 fwrite($f, $out);
 
@@ -20,5 +35,6 @@ if ($zip->open('cards.zip') === TRUE) {
 } else {
     echo 'failed';
 }
+*/
 
 ?>
