@@ -19,6 +19,31 @@ function scaricaPagina($ind) {
     return file_get_contents($ind);
 }
 
+function scaricaZip($nomefile, $ind) {
+	$TMP = 'tmp.zip';
+	/* Scarioco file zip */
+    $out = scaricaPagina($ind);
+    $f = fopen($TMP, "w") or die("Unable to open file!");
+    fwrite($f, $out);
+    fclose($f);
+	
+	/* Estraggo lo zip */
+    $zip = new ZipArchive;
+    if ($zip->open($TMP) === TRUE) {
+        $f = fopen($nomefile, "w");
+		
+		/* Salvo il contenuto non compresso */
+        fwrite($f, $zip->getFromIndex(0));
+        $zip->close();
+
+        fclose($f);
+    } else {
+        echo 'failed';
+    }
+	
+	//delete($TMP); //NOn funziona
+}
+
 $cv = scaricaPagina('http://mtgjson.com/'); /* Controllo versione */
 
 preg_match('/\<span id=\"currentversion\"\>[^\d]*([\d])*\.([\d])*\.([\d]*).*\<\/span\>/', $cv, $m);
@@ -42,30 +67,13 @@ if($letto[0]>$attuale[0] ||
                                  ($letto[1] == $attuale[1] && $letto[2] > $attuale[2])))) $da_scaricare = true;
 /* Nel caso sia da aggiornare procedo */
 if($da_scaricare) {
-	/* Scarioco file zip */
-    $out = scaricaPagina("http://mtgjson.com/json/AllCards.json.zip");
-    $f = fopen("cards.zip", "w") or die("Unable to open file!");
-    fwrite($f, $out);
 	
 	/* Scrivo la nuova versione */
     $f = fopen("versionejson", "w");
     fwrite($f, json_encode($letto));
-
-    fclose($f);
 	
-	/* Estraggo lo zip */
-    $zip = new ZipArchive;
-    if ($zip->open('cards.zip') === TRUE) {
-        $f = fopen("cards.json", "w");
-		
-		/* Salvo il contenuto non compresso */
-        fwrite($f, $zip->getFromName('AllCards.json'));
-        $zip->close();
-
-        fclose($f);
-    } else {
-        echo 'failed';
-    }
+	scaricaZip('cards.json', 'http://mtgjson.com/json/AllCards.json.zip');
+	scaricaZip('sets.json', 'http://mtgjson.com/json/AllSets.json.zip');
 }
 
 ?>
