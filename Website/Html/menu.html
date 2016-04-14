@@ -4,14 +4,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
         <script type = "text/javascript" src = "../Javascript/jquery.min.js"></script>
-		<script type = "text/javascript" src = "../Javascript/navEngine.js"></script>
 		<script src="../Bootstrap/bootstrap-3.3.6/dist/js/bootstrap.min.js"></script>
-  
+        <link rel = "stylesheet" type="text/css" href = "../Bootstrap/bootstrap-3.3.6/dist/css/bootstrap.min.css">
+		
+		<script type = "text/javascript" src = "../Javascript/search.js"></script>
+		<script type = "text/javascript" src = "../Javascript/navEngine.js"></script>
         <link rel = "stylesheet" type="text/css" href = "../Css/General/general.css">
         <link rel = "stylesheet" type="text/css" href = "../Css/General/navEngine.css">
         <link rel = "stylesheet" type="text/css" href = "../Css/Pages/menu.css">
         <link rel = "stylesheet" type="text/css" href = "../Css/Pages/pages_style.css">
-        <link rel = "stylesheet" type="text/css" href = "../Bootstrap/bootstrap-3.3.6/dist/css/bootstrap.min.css">
     </head>
     <body>
 	
@@ -46,7 +47,7 @@
 							</ul>
 						</div>
 						<input id = "search-text" class = "search-element" type = "text" placeholder = "Cerca" aria-expanded = "false" keepfocus = "true" maxlength = "256" name = "search-text" value = "">
-						<input id = "search-btn-submit" class = "search-element" type = "submit" value = "" aria-label = "esegui la ricerca" onclick = "onClickBtnSearch()">
+						<input id="search-btn-submit" class="search-element" type="button" value="" onclick="onClickBtnSearch()">
 					</div>
 				</div>
 				<hr class = "div-cards-delimiter">
@@ -131,8 +132,8 @@
 			
 			<div id = "nav-page-3" class = "nav-page">
 				<div id = "div-btn-save-load">
-					<button id="btn-save" class="btn-standard">SALVA</button>
-					<button id="btn-load" class="btn-standard">CARICA</button>
+					<button id="btn-save" class="btn-standard" onclick="onSaveBtnClick()">SALVA</button>
+					<button id="btn-load" class="btn-standard" onclick="onLoadBtnClick()">CARICA</button>
 				</div>
 				<div id = "div-deck-container">
 				

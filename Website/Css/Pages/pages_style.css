@@ -126,10 +126,7 @@
 	left: 50%;
 	transform: translateX(-50%);
 	width: 95%;
-	height: 80%;
-}
-
-#cards-container{
+	height: 88%;
 	overflow-y: scroll;
 	visibility: hidden;
 }
@@ -143,7 +140,7 @@
 }
 
 .card-img{
-	width: 50%;
+	width: 40%;
 	height: auto;
 }
 

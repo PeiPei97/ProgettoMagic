@@ -11,9 +11,21 @@
     );
 
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	
   }catch(PDOException $ex){
       echo("Connessinoe fallita.".$ex->getMessage());
   }
+  
+  /* rilevamento richiesta dal client */
+	if(is_ajax()){
+		$arr["nome"] = $_GET["nome"];
+		$arr["tipo"] = $_GET["tipo"];
+		$arr["colore"] = $_GET["colore"];
+		$arr["espansione"] = $_GET["espansione"];
+		$arr["rarita"] = $_GET["rarita"];
+
+		$jsonResults = ricerca($arr);
+	}
 
   /*Ricerca gli elenchi degli attributi delle carte, nasce per riempire i campi di ricerca*/
   /*Non utilizzo la bind perchè il parametro viene passato dal programmatore, non dall'utonto*/
@@ -100,17 +112,6 @@
   }
   
   
- /* rilevamento richiesta dal client */
-  if(is_ajax()){
-	$arr["nome"] = $_POST["nome"];
-	$arr["tipo"] = $_POST["tipo"];
-	$arr["colore"] = $_POST["colore"];
-	$arr["espansione"] = $_POST["espansione"];
-	$arr["rarita"] = $_POST["rarita"];
-	
-	$jsonResults = ricerca($arr);
-  }
-
   // $arr["nome"] = "Orco";
   // $arr["tipo"] = "4";
   // $arr["colore"] = "";
