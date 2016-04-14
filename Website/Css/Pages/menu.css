@@ -1,0 +1,113 @@
+/* Animation (an) elements */
+        .an-menu{
+            animation-name: menuAnimation;  animation-iteration-count: 1; animation-timing-function: ease; animation-duration: 0.5s;
+            animation-fill-mode: forwards;
+        }
+
+        .an-voice{
+            animation-name: voiceAnimation;  animation-iteration-count: 1; animation-timing-function: ease; animation-duration: 0.5s;
+            animation-fill-mode: forwards;
+        }
+		
+		.pt-page-button{
+			transition: 0.3s ease;
+		}
+
+        .pt-page-button:hover{
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+			background-color: rgba(255,255,255,0.08);
+        }
+
+/* Locator (ol) elements */
+    #lr-menu {
+        width: 100%; height: 40%;
+        margin-top: 2.5%;
+    }
+
+    #lr-properties {
+        position: absolute;
+        top: 30%; right: 0; left: 10%;
+        margin: auto;
+        width: 40%; height: 10%;
+    }
+
+/* Page (pg) elements */
+    .pg-side {
+        background-color: #343838;
+    }
+
+    #pg-side-1{
+        position: fixed;
+        width: 100%; height: 50%;
+        top: 0;
+    }
+
+    #pg-side-2{
+        position: fixed;
+        width: 100%; height: 50%;
+        bottom: 0;
+    }
+
+    #pg-side-3{
+        position: fixed;
+        width: 10%; height: 100%;
+        top: 0; left: 0;
+    }
+
+    #pg-side-4{
+        position: fixed;
+        width: 10%; height: 100%;
+        top: 0; right: 0;
+    }
+
+    #pg-load {
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        margin: auto;
+        width: 100%; height: 8%;
+		box-shadow: 0 0.5vw 0.5vw rgba(0,0,0,0.2);
+		z-index: 5;
+        background-color: transparent;
+    }
+
+    #pg-load-mask{
+        display: block;
+        width: 100%; height: 100%;
+        background-color: #D46A6A;
+    }
+
+    #pg-menu {
+        display: block;
+        padding: 0;
+        width: 100%; height: 100%;
+        float: right;
+        background-color: #343838;
+    }
+
+        #pg-menu>div {
+            display: inline-table;
+            width: 33.3%; height: 100%;
+            text-align: center;
+        }
+
+        #pg-menu>div>a {
+            display: table-cell;
+            vertical-align: middle;
+			font-size: 1.5vw;
+            text-decoration: none;
+            color: #E4EAEA;
+            width: 100%; height: 100%;
+        }
+
+/* Part (pt) elements */
+
+    .pt-lang-button {
+        color: #c5cae9;
+        transition: 0.5s;
+    }
+
+        .pt-lang-button:hover {
+            color: #5C88C4;
+            cursor: pointer;
+            text-shadow: 0 5px 20px rgba(0, 0, 0, 0.83);
+        }

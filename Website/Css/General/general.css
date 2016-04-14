@@ -1,0 +1,22 @@
+/* Fonts */
+	@font-face {
+        font-family: RobotoRegular;
+        src: url("../../Fonts/Roboto/Roboto-Regular.ttf");
+    }
+	
+	@font-face {
+        font-family: PoiretOne;
+        src: url("../../Fonts/PoiretOne-Regular.ttf");
+    }
+	
+	@font-face {
+        font-family: Jonah;
+        src: url("../../Fonts/Jonah-Regular.ttf");
+    }
+
+/* General settings */
+    body {
+        width: 100%; height: 100%;
+        margin: 0;
+        font-family: RobotoRegular;
+    }

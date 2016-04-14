@@ -1,0 +1,143 @@
+<html>
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+        <script type = "text/javascript" src = "../Javascript/jquery.min.js"></script>
+		<script type = "text/javascript" src = "../Javascript/navEngine.js"></script>
+		<script src="../Bootstrap/bootstrap-3.3.6/dist/js/bootstrap.min.js"></script>
+  
+        <link rel = "stylesheet" type="text/css" href = "../Css/General/general.css">
+        <link rel = "stylesheet" type="text/css" href = "../Css/General/navEngine.css">
+        <link rel = "stylesheet" type="text/css" href = "../Css/Pages/menu.css">
+        <link rel = "stylesheet" type="text/css" href = "../Css/Pages/pages_style.css">
+        <link rel = "stylesheet" type="text/css" href = "../Bootstrap/bootstrap-3.3.6/dist/css/bootstrap.min.css">
+    </head>
+    <body>
+	
+		<div id = "nav-main">
+			<div id = "pg-load">
+				<span id = "pg-load-mask" class = "an-load-1">
+					<nav id = "pg-menu">
+						<div class = "pt-page-button pt-page-button-1" page-anchor = "1"><a href = "#">HOME</a><div class = "focus"></div></div><div class = "pt-page-button pt-page-button-2" page-anchor = "2"><a href = "#">RICERCA</a><div class = "focus"></div></div><div class = "pt-page-button pt-page-button-3" page-anchor = "3"><a href = "#">MAZZO</a><div class = "focus"></div></div>
+					</nav>
+				</span>
+			</div>
+			
+			<div id = "nav-page-1" class = "nav-page current-page">
+				<div id = "img-background-home" class = "img-container">
+					<div id = "home-text"><div id = "home-text-1-line" class = "home-text-line">Magic</span> is real</div><div id = "home-text-2-line" class = "home-text-line">with the right cards</div></div>
+				</div>
+            </div>
+        
+			<div id = "nav-page-2" class = "nav-page">
+				<div id = "search-bar-container">
+					<div id = "search-bar">
+						<div id = "options-menu" class = "dropdown">
+							<div id = "search-options-icon" class = "search-element dropdown-toggle" data-toggle="dropdown" aria-label = "impostazioni di ricerca"></div>
+							
+							<ul class="dropdown-menu" role="menu">
+								<li role="presentation" id="header-opt-menu" class="dropdown-header">Ricerca per</li>
+								<li rel="0" role="presentation"><a href="#" tabindex="0" role="menuitem" class="opt selected-item" id="nome">nome</a></li>
+								<li rel="0" role="presentation"><a href="#" tabindex="0" role="menuitem" class="opt" id="tipo">tipo</a></li>
+								<li rel="0" role="presentation"><a href="#" tabindex="0" role="menuitem" class="opt" id="colore">colore</a></li>
+								<li rel="0" role="presentation"><a href="#" tabindex="0" role="menuitem" class="opt" id="espansione">espansione</a></li>
+								<li rel="0" role="presentation"><a href="#" tabindex="0" role="menuitem" class="opt" id="rarita">rarità</a></li>
+							</ul>
+						</div>
+						<input id = "search-text" class = "search-element" type = "text" placeholder = "Cerca" aria-expanded = "false" keepfocus = "true" maxlength = "256" name = "search-text" value = "">
+						<input id = "search-btn-submit" class = "search-element" type = "submit" value = "" aria-label = "esegui la ricerca" onclick = "onClickBtnSearch()">
+					</div>
+				</div>
+				<hr class = "div-cards-delimiter">
+				<div id = "cards-container">
+					<div id = "div-cards-container">
+						<div class = "card">
+							<div class="col-sm-6 col-md-4">
+								<div class="thumbnail">
+									<img class="card-img" src="../Immagini/cards/default-card.jpg">
+									<div class="caption">
+										<h3>$nome_carta</h3>
+										<p>$descrizione_carta</p><p>
+										<a href="#" class="btn btn-primary" role="button">Aggiungi al mazzo</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class = "card">
+							<div class="col-sm-6 col-md-4">
+								<div class="thumbnail">
+									<img class="card-img" src="../Immagini/cards/default-card.jpg">
+									<div class="caption">
+										<h3>$nome_carta</h3>
+										<p>$descrizione_carta</p><p>
+										<a href="#" class="btn btn-primary" role="button">Aggiungi al mazzo</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class = "card">
+							<div class="col-sm-6 col-md-4">
+								<div class="thumbnail">
+									<img class="card-img" src="../Immagini/cards/default-card.jpg">
+									<div class="caption">
+										<h3>$nome_carta</h3>
+										<p>$descrizione_carta</p><p>
+										<a href="#" class="btn btn-primary" role="button">Aggiungi al mazzo</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class = "card">
+							<div class="col-sm-6 col-md-4">
+								<div class="thumbnail">
+									<img class="card-img" src="../Immagini/cards/default-card.jpg">
+									<div class="caption">
+										<h3>$nome_carta</h3>
+										<p>$descrizione_carta</p><p>
+										<a href="#" class="btn btn-primary" role="button">Aggiungi al mazzo</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class = "card">
+							<div class="col-sm-6 col-md-4">
+								<div class="thumbnail">
+									<img class="card-img" src="../Immagini/cards/default-card.jpg">
+									<div class="caption">
+										<h3>$nome_carta</h3>
+										<p>$descrizione_carta</p><p>
+										<a href="#" class="btn btn-primary" role="button">Aggiungi al mazzo</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class = "card">
+							<div class="col-sm-6 col-md-4">
+								<div class="thumbnail">
+									<img class="card-img" src="../Immagini/cards/default-card.jpg">
+									<div class="caption">
+										<h3>$nome_carta</h3>
+										<p>$descrizione_carta</p><p>
+										<a href="#" class="btn btn-primary" role="button">Aggiungi al mazzo</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr class = "div-cards-delimiter">
+			</div>
+			
+			<div id = "nav-page-3" class = "nav-page">
+				<div id = "div-btn-save-load">
+					<button id="btn-save" class="btn-standard">SALVA</button>
+					<button id="btn-load" class="btn-standard">CARICA</button>
+				</div>
+				<div id = "div-deck-container">
+				
+				</div>
+			</div>
+		</div>
+    </body>
+</html>

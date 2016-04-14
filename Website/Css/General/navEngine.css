@@ -1,0 +1,155 @@
+/* Website navigation Keyframes */
+
+/* Ease transparency | Navigation animation */
+@keyframes fade-ease-pageOutTop {
+    0%      {}
+    100%    	{transform: translateY(-100%); }
+}
+
+@keyframes fade-ease-pageInTop {
+    0%      { z-index: 1; opacity: 1; transform: translateY(-100%); }
+    100%    	{ z-index: 1; opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-ease-pageOutBottom {
+    0%      {}
+    100%    	{transform: translateY(100%); }
+}
+@keyframes fade-ease-pageInBottom {
+    0%      { z-index: 1; opacity: 1; transform: translateY(100%); }
+    100%    	{ z-index: 1; opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-ease-pageInLeft {
+    0%      { z-index: 1; opacity: 1; transform: translateX(100%); }
+    100%    	{ z-index: 1; opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fade-ease-pageOutLeft {
+    0%      { z-index: 0; opacity: 1; width: 100%; height: 100%; }
+    100%    	{ z-index: 0; opacity: 0; width: 75%; height: 75%; }
+}
+
+@keyframes fade-ease-pageInRight {
+    0%      { z-index: 0; opacity: 0; width: 75%; height: 75%; }
+    100%    	{ z-index: 0; opacity: 1;  width: 100%; height: 100%; }
+}
+
+@keyframes fade-ease-pageOutRight {
+    0%      { z-index: 1; opacity: 1; transform: translateX(0); }
+    100%    	{ z-index: 1; opacity: 1; transform: translateX(100%); }
+}
+
+/* Jump appearing | Menu animation */
+@keyframes menu-appear-PageIn {
+	0%      { z-index: 0; opacity: 0; transform: scale(0.5); }
+	100%    	{ z-index: 0; opacity: 1; transform: scale(1); }
+}
+
+@keyframes menu-appear-PageOut {
+    0%      { z-index: 1; opacity: 1; transform: scale(1); }
+	90%    	{ z-index: 1; opacity: 0; transform: scale(1.5); }
+	100%    	{ z-index: 0; opacity: 0; }
+}
+
+@keyframes menu-disappear-PageIn {
+	0%      { z-index: 1; opacity: 0; transform: scale(1.5); }
+	100%    	{ z-index: 1; opacity: 1; transform: scale(1); }
+}
+
+@keyframes menu-disappear-PageOut {
+    0%      { z-index: 0; opacity: 1; transform: scale(1); }
+	50%    	{ z-index: 0; opacity: 0; transform: scale(0.5); }
+	100%    	{ z-index: 0; opacity: 0; }
+}
+
+/* Website navigation Classes */
+#nav-main{
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+	margin: 0 auto;
+	width: 100%; height: 100%;
+	overflow-x: hidden;
+    background-color: #343838;
+}
+
+.nav-page{
+	position: fixed;
+	top: 8%; left: 0; right: 0;
+	margin: auto;
+	text-align: center;
+	width: 100%; height: 92%;
+	opacity: 0;
+}
+
+.current-page{
+	opacity: 1;
+	z-index: 1;
+}
+
+.in-page-ease-left{
+    z-index: 1;
+    opacity: 1;
+    animation-name: fade-ease-pageInLeft;  animation-iteration-count: 1; animation-timing-function: ease; animation-duration: 1s;
+}
+
+.in-page-ease-bottom{
+    z-index: 1;
+    opacity: 1;
+    animation-name: fade-ease-pageInBottom;  animation-iteration-count: 1; animation-timing-function: ease; animation-duration: 1s;
+}
+
+.out-page-ease-top{
+    z-index: 1;
+    opacity: 1;
+    animation-name: fade-ease-pageOutTop;  animation-iteration-count: 1; animation-timing-function: ease; animation-duration: 1s;
+}
+
+.in-page-ease-top{
+    z-index: 1;
+    opacity: 1;
+    animation-name: fade-ease-pageInTop;  animation-iteration-count: 1; animation-timing-function: ease; animation-duration: 1s;
+}
+
+.out-page-ease-bottom{
+    z-index: 1;
+    opacity: 1;
+    animation-name: fade-ease-pageOutBottom;  animation-iteration-count: 1; animation-timing-function: ease; animation-duration: 1s;
+}
+
+.out-page-ease-left{
+    z-index: 0;
+    opacity: 0;
+    width: 100%; height: 100%;
+    animation-name: fade-ease-pageOutLeft;  animation-iteration-count: 1; animation-timing-function: ease; animation-duration: 1s;
+}
+
+.in-page-ease-right{
+    z-index: 1;
+    opacity: 1;
+    width: 100%; height: 100%;
+    animation-name: fade-ease-pageInRight;  animation-iteration-count: 1; animation-timing-function: ease; animation-duration: 1s;
+}
+
+.out-page-ease-right{
+    z-index: 0;
+    opacity: 0;
+    animation-name: fade-ease-pageOutRight;  animation-iteration-count: 1; animation-timing-function: ease; animation-duration: 1s;
+}
+
+.in-page-jump-appear{
+	animation-name: menu-appear-PageIn;  animation-iteration-count: 1; animation-timing-function: ease; animation-duration: 1s;
+}
+
+.out-page-jump-appear{
+	animation-name: menu-appear-PageOut;  animation-iteration-count: 1; animation-timing-function: ease; animation-duration: 1s;
+}
+	
+.in-page-jump-disappear{
+	animation-name: menu-disappear-PageIn;  animation-iteration-count: 1; animation-timing-function: ease; animation-duration: 1s;
+}
+
+.out-page-jump-disappear{
+	animation-name: menu-disappear-PageOut;  animation-iteration-count: 1; animation-timing-function: ease; animation-duration: 1s;
+}
+	
