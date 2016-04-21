@@ -38,11 +38,10 @@ function onClickBtnSearch(){
 		}
 		
 		$.ajax({
-			url: "../Php/ricerca.php",
+			url: "Php/ricerca.php",
 			type: "GET",
 			data: {"nome": ricerca_nome, "tipo": ricerca_tipo, "colore": ricerca_colore, "espansione": ricerca_espansione, "rarita": ricerca_rarita},
-			contentType: "application/json; charset=utf-8",
-			dataType: "json",
+			
 			success:function(result){
 				document.getElementById("div-cards-container").innerHTML = "";
 				var cards = JSON.Parse(result);

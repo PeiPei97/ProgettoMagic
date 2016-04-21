@@ -73,13 +73,19 @@
     if($request["colore"] != ""){
       $tabelle = $tabelle.", costi_carte";
       $codizioni = $condizioni."AND costi_carte.carte_id = carte.id ";
-      $condizioni = $condizioni."AND colori_id = ? ";
+	  /* Futura espansione del sito visualizzare un menù a tendina con le varie espansioni
+	   * $condizioni = $condizioni."AND colori_id = ? ";
+	   */
+	   $condizioni = $condizioni."AND colore = ? ";
       $binds[] = $request["colore"];
     }
     if($request["espansione"] != ""){
       $tabelle = $tabelle.", espanioni_carte";
       $condizioni = $condizioni."AND espansioni_carte.carte_id = carte.id ";
-      $condizioni = $condizioni."AND espansioni_id = ? ";
+      /* Futura espansione del sito visualizzare un menù a tendina con le varie espansioni
+	   * $condizioni = $condizioni."AND espansioni_id = ? ";
+	   */
+      $condizioni = $condizioni."AND espansione LIKE (%?%) ";
       $binds[] = $request["espansione"];
     }
     if($request["rarita"] != ""){
@@ -102,7 +108,6 @@
 
 
     try{
-
         $stm->execute();
     }catch(PDOException $e){
       echo($e->getMessage());

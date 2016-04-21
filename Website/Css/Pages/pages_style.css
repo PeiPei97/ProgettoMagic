@@ -12,6 +12,7 @@
 #home-text{
 	position:absolute;
 	margin-top: 10%;
+	text-shadow: 0px 0px 10px #000;
 	margin-bottom: auto;
 	width: 100%;
 	font-family: PoiretOne;
