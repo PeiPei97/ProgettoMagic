@@ -28,7 +28,7 @@
 }
 
 #nav-page-2{
-	background-color: #FFACAA;
+	background-color: #D4D9EA;
 	text-align: center;
 }
 
@@ -143,6 +143,18 @@
 .card-img{
 	width: 40%;
 	height: auto;
+}
+
+.btn-add-card{
+	background: #718EA4;
+	border: #718EA4 1px solid;
+	transition: 0.5s;
+}
+
+.btn-add-card:hover{
+	background: #FFF;
+	color: #718EA4;
+	border: #718EA4 1px solid;
 }
 
 #nav-page-3{

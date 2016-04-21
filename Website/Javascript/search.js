@@ -2,7 +2,7 @@
 /* selected item */
 const SELECTEDITEM = 'selected-item';
 /* default card image */
-const PATHIMGDEFAULT = "../Immagini/cards/default-card.jpg";
+const PATHIMGDEFAULT = "Immagini/cards/default-card.jpg";
 /* inizialized filter variable	*/
 $filter = "nome";
 
@@ -55,7 +55,7 @@ function onClickBtnSearch(){
 					if($path_img_carta==""){
 						$path_img_carta = PATHIMGDEFAULT;
 					}
-					$("#div-cards-container").append("<div class='card'><div class='col-sm-6 col-md-4'><div class='thumbnail'><img class='card-img' src='" + $path_img_carta + "'><div class='caption'><p>nome: <h3 class='card-name'>" + $nome_carta + "</h3></p><p class='card-color'>colore: " + $colore_carta + "</p><p class='card-expansion'>espansione: " + espansione_carta + "</p><p class='card-type'>tipo: " + tipo_carta + "</p><p class='card-rarity'>rarità: " + rarita_carta + "</p><p><a href='#' class='btn btn-primary btn-add-card' role='button'>Aggiungi al mazzo</a></div></div></div></div>");
+					$("#div-cards-container").append("<div class='card'><div class='col-sm-6 col-md-4'><div class='thumbnail'><img class='card-img' src='" + $path_img_carta + "'><div class='caption'><p><h3 class='card-name'>" + $nome_carta + "</h3></p><p class='card-color'>colore: " + $colore_carta + "</p><p class='card-expansion'>espansione: " + espansione_carta + "</p><p class='card-type'>tipo: " + tipo_carta + "</p><p class='card-rarity'>rarità: " + rarita_carta + "</p><p><a href='#' class='btn btn-primary btn-add-card' role='button'>Aggiungi al mazzo</a></p></div></div></div></div>");
 				}
 				if(i==0){
 					alert("Nessuna carta trovata");
