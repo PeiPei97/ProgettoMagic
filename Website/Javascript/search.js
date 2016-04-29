@@ -50,8 +50,8 @@ function onClickBtnSearch(){
 					$colore_carta = cards[i].colore;
 					$espansione_carta = cards[i].espansione;
 					$tipo_carta = cards[i].colore;
-					$rarita_carta = cards[i].rarita;
-					$path_img_carta = cards[i].immagine;
+					$rarita_carta = cards[i].descrizione;
+					$path_img_carta = cards[i].link_immagine;
 					if($path_img_carta==""){
 						$path_img_carta = PATHIMGDEFAULT;
 					}

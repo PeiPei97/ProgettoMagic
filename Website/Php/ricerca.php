@@ -59,37 +59,27 @@
   function ricerca($request){
     global $conn;
     $binds= [];
-    $query = "SELECT * FROM ";
-    $tabelle = "carte";
-    $condizioni = "1=1 ";
+    $query = "SELECT nome, tipi.tipo, rarita.descrizione, colore, testo, espanione, link as link_immagine FROM ";
+    $tabelle = "carte, colori, rarita, tipi, espansioni_carte, espanioni";
+    $condizioni = "carte.colore_id=colori.id AND carte.rarita=rarita.id AND carte.tipo=tipi.id AND carte.id=espanioni_carte.carte_id AND espanioni_carte.espanioni_id=espansioni.id ";
     if($request["nome"] != ""){
       $condizioni = $condizioni."AND nome LIKE ? ";
       $binds[] = "%".$request["nome"]."%";
     }
     if($request["tipo"] != ""){
-      $condizioni = $condizioni."AND tipo = ? ";
+      $condizioni = $condizioni."AND tipi.tipo = ? ";
       $binds[] = $request["tipo"];
     }
     if($request["colore"] != ""){
-      $tabelle = $tabelle.", costi_carte";
-      $codizioni = $condizioni."AND costi_carte.carte_id = carte.id ";
-	  /* Futura espansione del sito visualizzare un menù a tendina con le varie espansioni
-	   * $condizioni = $condizioni."AND colori_id = ? ";
-	   */
-	   $condizioni = $condizioni."AND colore = ? ";
+	  $condizioni = $condizioni."AND colore = ? ";
       $binds[] = $request["colore"];
     }
     if($request["espansione"] != ""){
-      $tabelle = $tabelle.", espanioni_carte";
-      $condizioni = $condizioni."AND espansioni_carte.carte_id = carte.id ";
-      /* Futura espansione del sito visualizzare un menù a tendina con le varie espansioni
-	   * $condizioni = $condizioni."AND espansioni_id = ? ";
-	   */
-      $condizioni = $condizioni."AND espansione LIKE (%?%) ";
-      $binds[] = $request["espansione"];
+      $condizioni = $condizioni."AND espansione LIKE ? ";
+      $binds[] = "%".$request["espansione"]."%";
     }
     if($request["rarita"] != ""){
-      $condizioni = $condizioni."AND rarita = ? ";
+      $condizioni = $condizioni."AND rarita.descrizione = ? ";
       $binds[] = $request["rarita"];
     }
 
