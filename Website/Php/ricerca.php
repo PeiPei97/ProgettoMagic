@@ -22,7 +22,6 @@
 		$arr["tipo"] = $_GET["tipo"];
 		$arr["colore"] = $_GET["colore"];
 		$arr["espansione"] = $_GET["espansione"];
-		$arr["rarita"] = $_GET["rarita"];
 
 		$jsonResults = ricerca($arr);
 	}
@@ -59,9 +58,9 @@
   function ricerca($request){
     global $conn;
     $binds= [];
-    $query = "SELECT nome, tipi.tipo, rarita.descrizione, colore, testo, espanione, link as link_immagine FROM ";
-    $tabelle = "carte, colori, rarita, tipi, espansioni_carte, espanioni";
-    $condizioni = "carte.colore_id=colori.id AND carte.rarita=rarita.id AND carte.tipo=tipi.id AND carte.id=espanioni_carte.carte_id AND espanioni_carte.espanioni_id=espansioni.id ";
+    $query = "SELECT nome, tipi.tipo, colore, testo, link as link_immagine FROM ";
+    $tabelle = "carte, colori, tipi";
+    $condizioni = "carte.colore_id=colori.id AND carte.tipo=tipi.id ";
     if($request["nome"] != ""){
       $condizioni = $condizioni."AND nome LIKE ? ";
       $binds[] = "%".$request["nome"]."%";
@@ -73,14 +72,6 @@
     if($request["colore"] != ""){
 	  $condizioni = $condizioni."AND colore = ? ";
       $binds[] = $request["colore"];
-    }
-    if($request["espansione"] != ""){
-      $condizioni = $condizioni."AND espansione LIKE ? ";
-      $binds[] = "%".$request["espansione"]."%";
-    }
-    if($request["rarita"] != ""){
-      $condizioni = $condizioni."AND rarita.descrizione = ? ";
-      $binds[] = $request["rarita"];
     }
 
     $query = $query.$tabelle." WHERE ".$condizioni;

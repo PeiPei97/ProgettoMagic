@@ -22,8 +22,6 @@ function onClickBtnSearch(){
 		var ricerca_nome = "";
 		var ricerca_tipo = "";
 		var ricerca_colore = "";
-		var ricerca_espansione = "";
-		var ricerca_rarita = "";
 		
 		if($filter == "nome"){
 			ricerca_nome = search_text;
@@ -31,16 +29,12 @@ function onClickBtnSearch(){
 			ricerca_tipo = search_text;
 		}else if($filter == "colore"){
 			ricerca_colore = search_text;
-		}else if($filter == "espansione"){
-			ricerca_espansione = search_text;
-		}else if($filter == "rarita"){
-			ricerca_rarita = search_text;
 		}
 		
 		$.ajax({
 			url: "Php/ricerca.php",
 			type: "GET",
-			data: {"nome": ricerca_nome, "tipo": ricerca_tipo, "colore": ricerca_colore, "espansione": ricerca_espansione, "rarita": ricerca_rarita},
+			data: {"nome": ricerca_nome, "tipo": ricerca_tipo, "colore": ricerca_colore, "espansione": ricerca_espansione},
 			
 			success:function(result){
 				document.getElementById("div-cards-container").innerHTML = "";
@@ -48,14 +42,12 @@ function onClickBtnSearch(){
 				for(i = 0; i < cards.length; i++){
 					$nome_carta = cards[i].nome;
 					$colore_carta = cards[i].colore;
-					$espansione_carta = cards[i].espansione;
 					$tipo_carta = cards[i].colore;
-					$rarita_carta = cards[i].descrizione;
 					$path_img_carta = cards[i].link_immagine;
-					if($path_img_carta==""){
+					if($path_img_carta=="nolink"){
 						$path_img_carta = PATHIMGDEFAULT;
 					}
-					$("#div-cards-container").append("<div class='card'><div class='col-sm-6 col-md-4'><div class='thumbnail'><img class='card-img' src='" + $path_img_carta + "'><div class='caption'><p><h3 class='card-name'>" + $nome_carta + "</h3></p><p class='card-color'>colore: " + $colore_carta + "</p><p class='card-expansion'>espansione: " + espansione_carta + "</p><p class='card-type'>tipo: " + tipo_carta + "</p><p class='card-rarity'>rarità: " + rarita_carta + "</p><p><a href='#' class='btn btn-primary btn-add-card' role='button'>Aggiungi al mazzo</a></p></div></div></div></div>");
+					$("#div-cards-container").append("<div class='card'><div class='col-sm-6 col-md-4'><div class='thumbnail'><img class='card-img' src='" + $path_img_carta + "'><div class='caption'><p><h3 class='card-name'>" + $nome_carta + "</h3></p><p class='card-color'>colore: " + $colore_carta + "</p><p class='card-type'>tipo: " + tipo_carta + "</p><p><a href='#' class='btn btn-primary btn-add-card' role='button'>Aggiungi al mazzo</a></p></div></div></div></div>");
 				}
 				if(i==0){
 					alert("Nessuna carta trovata");
