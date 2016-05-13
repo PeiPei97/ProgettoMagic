@@ -7,8 +7,9 @@
 		<script src="Bootstrap/bootstrap-3.3.6/dist/js/bootstrap.min.js"></script>
         <link rel = "stylesheet" type="text/css" href = "Bootstrap/bootstrap-3.3.6/dist/css/bootstrap.min.css">
 		
-		<script type = "text/javascript" src = "Javascript/search.js"></script>
 		<script type = "text/javascript" src = "Javascript/navEngine.js"></script>
+		<script type = "text/javascript" src = "Javascript/search.js"></script>
+		<script type = "text/javascript" src = "Javascript/deck.js"></script>
         <link rel = "stylesheet" type="text/css" href = "Css/General/general.css">
         <link rel = "stylesheet" type="text/css" href = "Css/General/navEngine.css">
         <link rel = "stylesheet" type="text/css" href = "Css/Pages/menu.css">
@@ -41,11 +42,10 @@
 								<li rel="0" role="presentation"><a href="#" tabindex="0" role="menuitem" class="opt selected-item" id="nome">nome</a></li>
 								<li rel="0" role="presentation"><a href="#" tabindex="0" role="menuitem" class="opt" id="tipo">tipo</a></li>
 								<li rel="0" role="presentation"><a href="#" tabindex="0" role="menuitem" class="opt" id="colore">colore</a></li>
-								<li rel="0" role="presentation"><a href="#" tabindex="0" role="menuitem" class="opt" id="espansione">espansione</a></li>
 							</ul>
 						</div>
 						<input id = "search-text" class = "search-element" type = "text" placeholder = "Cerca" aria-expanded = "false" keepfocus = "true" maxlength = "256" name = "search-text" value = "">
-						<input id="search-btn-submit" class="search-element" type="button" value="" onclick="onClickBtnSearch()">
+						<input id="search-btn-submit" class="search-element" type="button" value="">
 					</div>
 				</div>
 				<hr class = "div-cards-delimiter">
@@ -63,7 +63,6 @@
 					<button id="btn-load" class="btn-standard" onclick="onLoadBtnClick()">CARICA</button>
 				</div>
 				<div id = "div-deck-container">
-					<h2><font color="#FFF">---  Work in progress  ---</font></h2>
 				</div>
 			</div>
 		</div>

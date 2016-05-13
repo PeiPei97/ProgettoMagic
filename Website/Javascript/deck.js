@@ -4,7 +4,9 @@ const $cookie_expires_days = 30;
 /* cookie count*/
 $cookie_count = 0;
 /* cards array */
-$cards_array;
+$cards_array = [];
+
+$is_an_event_running = false;
 
 /* write a new cookie */
 function createCookie(cookie_name, cookie_value, expires_days) {
@@ -13,12 +15,20 @@ function createCookie(cookie_name, cookie_value, expires_days) {
     data.setTime(data.getTime() + (expires_days*(24*60*60*1000)));
     var expires = "expires="+data.toUTCString();
     document.cookie = cookie_name + "=" + cookie_value + "; " + expires + "; " + path;
-	$cookie_count += 1;
+}
+
+/* delete all cookies */
+function deleteAllCookies(){
+	var cookies = document.cookie.split(';');
+	for(var i=0; i<cookies.length; i++){
+		var name = $cookie_name_root + i + "=";
+		createCookie(name, "", -1);
+	}
 }
 
 /* read all cookies */
 function getCookies() {
-	var card_names;
+	$cards_array = [];
     var cookies = document.cookie.split(';');
     for(var i=0; i<cookies.length; i++) {
 		var name = $cookie_name_root + i + "=";
@@ -27,62 +37,82 @@ function getCookies() {
         while (temp_element.charAt(0)==' ')
 			temp_element = temp_element.substring(1);
 		/* adding the id to the array */
-        if (temp_element.indexOf(name) == 0)
-			card_names[i] temp_element.substring(name.length,temp_element.length);
+        if (temp_element.indexOf(name) == 0){
+			var card_name = temp_element.substring(name.length,temp_element.length);
+			$cards_array[i] = card_name;
+		}
+		
     }
-    return card_names;
-}
-
-/* delete all cookies */
-function deleteAllCookies(){
-	for(var i=0; i<$cookies.length; i++){
-		var name = $cookie_name_root + i + "=";
-		createCookie(name, "", -1");
-	}
-	$cookie_count = 0;
 }
 
 
 /* saving on cookies the whole deck */
 function onSaveBtnClick(){
-	deleteAllCookies();
-	for(var i=0; i<$cards_array.length; i++){
-		cookie_name = $cookie_name_root + i;
-		createCookie(cookie_name ,cards_array[i], $cookie_expires_days);
+	if(!$is_an_event_running){
+		$is_an_event_running = true;
+		deleteAllCookies();
+		for(i=0; i<$cards_array.length; i++){
+			cookie_name = $cookie_name_root + i;
+			createCookie(cookie_name ,$cards_array[i], $cookie_expires_days);
+		}
+		$is_an_event_running = false;
 	}
 }
 
 /* load a deck from cookies */
 function onLoadBtnClick(){
-	cards=getCookies();
-	document.getElementById("div-deck-container").innerHTML = "";
-	for(var i=0; i<cards.length; i++)
-		display_card_name(cards[i]);
+	if(!$is_an_event_running){
+		$is_an_event_running = true;
+		getCookies();
+		document.getElementById("div-deck-container").innerHTML = "";
+		for(i = 0; i < $cards_array.length; i++){
+			display_card_name($cards_array[i]);
+		}
+		$is_an_event_running = false;
+	}
 }
 
 
 /* add a card in the deck */
-$('.btn-add-card').on('click', function (){
-	name = $(this).parent.parent.next("h3.card-name").innerText;
-	/* add the card to the deck only if there are at maximum 4 same cards */
-	if(card_count(name)<4)
-		display_card_name(name);
-	else
-		alert("Hai già inserito 4 volte questa carta!");
-});
+function add_card(btn){
+	if(!$is_an_event_running){
+		$is_an_event_running = true;
+		var card_elements = btn.parentElement.parentElement.childNodes;
+		var i = 0;
+		/* getting the card name */
+		while(card_elements[i].className != 'card-name' && i < card_elements.length){
+			i++;
+		}
+		if(i != card_elements.length){
+			var name = card_elements[i].innerHTML;
+			var id = card_elements[i].id;
+			/* add the card to the deck only if there are at maximum 4 same cards */
+			if(id != "" && name != "" && card_count(name) < 4){
+				$cards_array[$cards_array.length] = name;
+				display_card_name(name);
+			}
+			else
+				alert("Hai già inserito 4 volte questa carta!");
+		}else{
+			alert("Si è verificato un problema. Ci scusiamo per il disagio");
+		}
+		
+		$is_an_event_running = false;
+	}
+}
 
 
 /* function that display the card name in a new paragraph */
 function display_card_name(name){
-	$cards_array[$cards_array.length] = name;
-	$("#div-deck-container").append("<p>" + $cards_array[$cards_array.length] + "</p>");
+	$("#div-deck-container").append("<p class='deck_card'>" + name + "</p>");
 }
 
 
 /* function that counts the recurrence of a card */
 function card_count(card_name){
 	var count = 0;
-	for(var i=0; i<$cards_array.length; i++){
-		if(cards_array[i] == card_name) count++;
+	for(var i = 0; i<$cards_array.length; i++){
+		if($cards_array[i] == card_name) count++;
+	}
 	return count;
 }
