@@ -43,7 +43,7 @@ $(document).ready( function() {
 			$.ajax({
 				url: "Php/ricerca.php",
 				type: "GET",
-				data: {"nome": ricerca_nome, "tipo": ricerca_tipo, "colore": ricerca_colore},
+				data: {"id": "", "nome": ricerca_nome, "tipo": ricerca_tipo, "colore": ricerca_colore},
 				success:function(result){
 					var cards = $.parseJSON(result);
 					for(var i = 0; i < cards.length; i++){

@@ -18,12 +18,14 @@
   
   /* rilevamento richiesta dal client */
 	if(isset($_GET["nome"])){
+		$arr["id"] = $_GET["id"];
 		$arr["nome"] = $_GET["nome"];
 		$arr["tipo"] = $_GET["tipo"];
 		$arr["colore"] = $_GET["colore"];
 
 		print (ricerca($arr));
 	}
+	$conn = null;
 
   /*Ricerca gli elenchi degli attributi delle carte, nasce per riempire i campi di ricerca*/
   /*Non utilizzo la bind perchè il parametro viene passato dal programmatore, non dall'utonto*/
@@ -58,9 +60,13 @@
   function ricerca($request){
     global $conn;
     $binds= [];
-    $query = "SELECT nome, tipi.tipo AS tipo, colori.colore, link AS link_immagine FROM ";
+    $query = "SELECT carte.id, nome, tipi.tipo AS tipo, colori.colore, link AS link_immagine FROM ";
     $tabelle = "carte, colori, tipi";
     $condizioni = "carte.colore=colori.id AND carte.tipo=tipi.id ";
+    if($request["id"] != ""){
+	  $condizioni = $condizioni."AND carte.id = ? ";
+      $binds[] = $request["id"];
+    }
     if($request["nome"] != ""){
       $condizioni = $condizioni."AND nome LIKE ? ";
       $binds[] = "%".$request["nome"]."%";
