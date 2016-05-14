@@ -138,7 +138,7 @@ $(document).ready(function() {
 					if(card.link_immagine=="nolink")
 						card.link_immagine = PATHIMGDEFAULT;
 					$("#card_information").html('');
-					$("#card_information").append("<div class='card'><div class='col-sm-6 col-md-4'><div class='thumbnail'><img class='card-img' src='" + card_info.link_immagine + "'><div class='caption'><h3 class='card-name' id='" + card_info.id + "'>" + card_info.name + "</h3><p class='card-color'>colore: " + card_info.color + "</p><p class='card-type'>tipo: " + card_info.type + "</p><p><a href='#' class='btn btn-primary btn-add-card' onclick='remove_card(this)' role='button'>Rimuovi dal mazzo</a></p><p><a href='#' class='btn btn-primary btn-add-card' onclick='close_popup()' role='button'>Chiudi</a></p></div></div></div></div>");
+					$("#card_information").append("<div class='card'><div><div class='thumbnail'><img class='card-img' src='" + card_info.link_immagine + "'><div class='caption'><h3 class='card-name' id='" + card_info.id + "'>" + card_info.name + "</h3><p class='card-color'>colore: " + card_info.color + "</p><p class='card-type'>tipo: " + card_info.type + "</p><p><a href='#' class='btn btn-primary btn-add-card' onclick='remove_card(this)' role='button'>Rimuovi dal mazzo</a></p><p><a href='#' class='btn btn-primary btn-add-card' onclick='close_popup()' role='button'>Chiudi</a></p></div></div></div></div>");
 					$("#card_information").removeClass("hidden-popup");
 					$("#card_information").addClass("visible-popup");
 				}else

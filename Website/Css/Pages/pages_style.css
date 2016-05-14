@@ -230,7 +230,8 @@
 	display: inline-block;
 	text-align: center;
     align-items: center;
-	width: 1200px;
+	width: 30%;
+	height: 70%;
 }
 
 .deck_card{
